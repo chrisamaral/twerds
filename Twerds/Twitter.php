@@ -72,7 +72,7 @@ class Twitter extends TwitterOAuth
 
         return [
             'previous' => $ls->previous_cursor,
-            'friends' => $friends,
+            'users' => $friends,
             'next' => $ls->next_cursor,
         ];
     }

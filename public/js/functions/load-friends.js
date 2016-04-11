@@ -1,6 +1,8 @@
 (function (Twerds) {
   function refreshUI (response) {
-    Twerds.mountFriendList(response.data.friends)
+    var friends = Twerds.state.friends = response.data
+
+    Twerds.mountFriendList(friends.users)
   }
 
   function loadFriends () {

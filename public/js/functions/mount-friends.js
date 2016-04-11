@@ -13,6 +13,7 @@
   function li (friend) {
     return {
       tag: 'li',
+      'data-id': friend.screen_name,
       className: 'collection-item avatar',
       children: [
         {

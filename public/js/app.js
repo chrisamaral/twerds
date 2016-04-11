@@ -12,6 +12,7 @@ jQuery(function () {
   }
 
   var Twerds = window.Twerds = {
+    state: {},
     init: function () {
       strapEvents()
 

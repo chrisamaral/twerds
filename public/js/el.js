@@ -15,10 +15,11 @@
    */
   function setAttribute (elem, name, val) {
     if (looksLikeAnEventHandler(name)) {
-      elem.addEventListener(
-        name.substr(2).toLowerCase(),
-        val
-      )
+      var eventName = name
+        .substr(2)
+        .toLowerCase()
+
+      elem.addEventListener(eventName, val)
     } else if (name === 'className' || name === 'value' || typeof val !== 'string') {
       elem[name] = val
     } else {
@@ -39,12 +40,11 @@
       ? children
       : [children]
 
-    delete config.children
-    delete config.tag
-
     var elem = document.createElement(tag)
 
     for (var key in config) {
+      if (key === 'children') continue
+      if (key === 'tag') continue
       if (config.hasOwnProperty(key)) {
         setAttribute(elem, key, config[key])
       }
@@ -79,25 +79,32 @@
    * @param {Element} target
    */
   function empty (target) {
-    while (target.firstChild) {
-      target.removeChild(target.firstChild);
+    while (target.lastChild) {
+      target.removeChild(target.lastChild)
     }
   }
 
-  function wrap (config, target) {
+  /**
+   *
+   * @param {Array|Object|String} config
+   * @param {Element} [target]
+   * @returns {Element|Comment|Text}
+   */
+  function renderElement (config, target) {
     if (!target) return createElement(config)
 
     config = Array.isArray(config)
       ? config
       : [config]
 
-
     empty(target)
 
     for (var i = 0; i < config.length; i++) {
       if (config[i]) target.appendChild(createElement(config[i]))
     }
+
+    return target
   }
 
-  window.el = wrap
+  window.el = renderElement
 }())
