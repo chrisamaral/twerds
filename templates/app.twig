@@ -1,0 +1,28 @@
+{% extends 'layouts/main.twig' %}
+
+{% block header %}
+    {% include 'app-header.twig' %}
+{% endblock %}
+
+{% block page %}
+    <br/>
+    <main class='container'>
+        <div class='row'>
+            <div class='col s12 m5'>
+                <h5>Following</h5>
+                <ul id='friend-list' class='collection'>
+
+                </ul>
+            </div>
+            <div class='col s12 m7'>
+
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block scripts %}
+    <script defer src='/js/load-script.js'></script>
+    <script defer src='/js/app.js'></script>
+{% endblock %}
+

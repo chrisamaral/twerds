@@ -1,0 +1,33 @@
+<nav>
+    <div class='nav-wrapper grey darken-3 white-text'>
+        <a href='/app' class='brand-logo center'>&nbsp;Twerds</a>
+
+        <a href='#' data-activates='mob-nav' class='button-collapse'>
+            <i class='material-icons'>menu</i>
+        </a>
+
+        <ul class='left hide-on-med-and-down'>
+            <li>
+                <a class='valign-wrapper' href='https://twitter.com/{{ user.screen_name }}'>
+                    <img class='circle' src='{{ user.avatar }}'/>
+                    <strong>&nbsp;&nbsp;{{ user.name }}</strong>
+                </a>
+            </li>
+        </ul>
+        <ul class='right hide-on-med-and-down'>
+            <li>
+                <a href='/logout'>
+                    <i class='material-icons right'>clear</i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+    <ul id='mob-nav' class='side-nav'>
+        <li>
+            <a href='/logout'>
+                Logout
+            </a>
+        </li>
+    </ul>
+</nav>
