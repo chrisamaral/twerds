@@ -45,9 +45,9 @@
    *
    * @param {Array} friends
    */
-  function mountFriendList (friends) {
+  function renderFriendList (friends) {
     el(friends.map(li), listElem)
   }
 
-  Twerds.mountFriendList = mountFriendList
+  Twerds.renderFriendList = renderFriendList
 }(window.Twerds, window.jQuery))

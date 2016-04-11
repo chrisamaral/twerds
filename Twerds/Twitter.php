@@ -76,4 +76,22 @@ class Twitter extends TwitterOAuth
             'next' => $ls->next_cursor,
         ];
     }
+
+    public function getLists(): array
+    {
+        $ls = $this->get('lists/ownerships', [
+            'count' => 100
+        ]);
+
+        return array_map(function ($list) {
+            return [
+                'id' => $list->id,
+                'name' => $list->name,
+                'description' => $list->description,
+                'members' => $list->member_count,
+                'creation' => $list->created_at,
+                'private' => $list->mode !== 'public'
+            ];
+        }, $ls->lists);
+    }
 }

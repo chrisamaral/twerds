@@ -5,6 +5,7 @@ use stdClass;
 
 class User
 {
+    public $id;
     public $name;
     public $screen_name;
     public $location;
@@ -14,8 +15,9 @@ class User
 
     public static function parse(stdClass $user): User
     {
-        $me = new User();
+        $me = new self();
 
+        $me->id = $user->id;
         $me->name = $user->name;
         $me->screen_name = $user->screen_name;
         $me->location = $user->location;

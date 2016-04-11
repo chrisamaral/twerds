@@ -103,3 +103,15 @@ $app->get('/friends',
             $twitter->getFriendList($request->getParam('cursor'))
         );
     })->add(new ProtectedRouteMiddleware($app));
+
+$app->get('/lists',
+    function (Request $request, Response $response): Response {
+        /**
+         * @var Twitter $twitter
+         */
+        $twitter = $this->twitter;
+
+        return $response->withJson(
+            $twitter->getLists()
+        );
+    })->add(new ProtectedRouteMiddleware($app));
